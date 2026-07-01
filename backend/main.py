@@ -1,11 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from .config import settings
 from .api.routes import upload, convert, validate, report, scores, health, compare, understand, tests
 from .api.middleware.logging import LoggingMiddleware
 from .api.middleware.exception_handler import ExceptionHandlerMiddleware
 
 app = FastAPI(title="APL Migration Platform - Enterprise Backend")
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 # Middlewares
 app.add_middleware(LoggingMiddleware)
