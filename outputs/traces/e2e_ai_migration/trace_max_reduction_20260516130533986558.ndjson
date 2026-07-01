@@ -1,0 +1,1 @@
+{"function_name":"max_reduction","timestamp":"2026-05-16T13:05:33.986558","inputs":{"A":[1,8,3]},"output":8,"dtype":"int64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"test":"max_reduction"},"success":true,"source":"⌈/A"}

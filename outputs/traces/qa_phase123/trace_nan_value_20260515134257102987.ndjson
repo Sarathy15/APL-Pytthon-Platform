@@ -1,0 +1,1 @@
+{"function_name":"nan_value","timestamp":"2026-05-15T13:42:57.102987","inputs":{"A":[1,null,3]},"dtype":"object","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"nan_value"},"success":false,"error":"VALUE ERROR: Undefined name: N\n      A←1 0 N 3\n            ∧","source":"+/A"}

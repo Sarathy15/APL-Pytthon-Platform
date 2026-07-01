@@ -1,0 +1,1 @@
+{"function_name":"float_values","timestamp":"2026-05-16T12:50:07.447799","inputs":{"A":[0.1,0.2,0.3]},"output":0.6,"dtype":"float64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"float_values"},"success":true,"source":"+/A"}

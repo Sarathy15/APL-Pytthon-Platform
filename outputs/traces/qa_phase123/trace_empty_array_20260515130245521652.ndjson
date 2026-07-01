@@ -1,0 +1,1 @@
+{"function_name":"empty_array","timestamp":"2026-05-15T13:02:45.521652","inputs":{"A":[]},"output":"","dtype":"<U1","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"empty_array"},"success":true,"error":"SYNTAX ERROR: Missing right argument\n      A←\n       ∧","source":"+/A"}

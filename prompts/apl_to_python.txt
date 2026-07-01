@@ -1,0 +1,21 @@
+# APL to Python Conversion Prompt
+You are a Lead Migration Engineer. Convert the following APL code to clean, idiomatic Python.
+
+Guidelines:
+- Use NumPy for array operations.
+- Maintain behavioral parity with APL (1-based vs 0-based indexing balance).
+- Include docstrings.
+- Ensure the code is production-ready.
+
+Input APL:
+{{apl_code}}
+
+Semantic Explanation:
+{{explanation}}
+
+Return JSON:
+{
+  "python_code": "...",
+  "confidence_score": 0.0-1.0,
+  "warnings": ["..."]
+}

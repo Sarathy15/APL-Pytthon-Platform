@@ -1,0 +1,5 @@
+Generate inputs designed to break the conversion:
+- Empty matrices
+- Scalars instead of arrays
+- Large integers (MAX_INT)
+- Performance-heavy nested arrays

@@ -1,0 +1,1 @@
+{"function_name":"infinity_value","timestamp":"2026-05-16T12:52:28.615803","inputs":{"A":[null,1]},"dtype":"object","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"infinity_value"},"success":false,"error":"SYNTAX ERROR: Invalid token: \"∞\" (⎕UCS 8734, U+221E)\n      A←∞1\n        ∧","source":"+/A"}

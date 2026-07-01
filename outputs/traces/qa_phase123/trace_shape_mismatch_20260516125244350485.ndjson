@@ -1,0 +1,1 @@
+{"function_name":"shape_mismatch","timestamp":"2026-05-16T12:52:44.350485","inputs":{"A":[1,2,3]},"output":6,"dtype":"int64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"shape_mismatch"},"success":true,"source":"+/A"}

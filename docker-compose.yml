@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.dockerfile
+    container_name: apl-migration-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/apl_migration
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - MODEL_NAME=qwen2.5-coder:3b
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000
+      - ENVIRONMENT=development
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend:/app
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: apl-migration-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=apl_migration
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

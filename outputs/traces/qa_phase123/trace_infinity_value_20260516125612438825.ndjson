@@ -1,0 +1,1 @@
+{"function_name":"infinity_value","timestamp":"2026-05-16T12:56:12.438825","inputs":{"A":[null,1]},"dtype":"object","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"infinity_value"},"success":false,"error":"DOMAIN ERROR\n      ⎕←+/A\n        ∧","source":"+/A"}

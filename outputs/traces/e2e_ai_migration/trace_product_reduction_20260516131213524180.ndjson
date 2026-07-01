@@ -1,0 +1,1 @@
+{"function_name":"product_reduction","timestamp":"2026-05-16T13:12:13.524180","inputs":{"A":[2,3,4]},"output":24,"dtype":"int64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"test":"product_reduction"},"success":true,"source":"×/A"}

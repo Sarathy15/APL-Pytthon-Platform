@@ -1,0 +1,6 @@
+# Prompt for scoring the migration quality
+Rate the following Python refactoring 1-10 on these axes:
+- Idiomatic (NumPy usage)
+- Performance (Vectorization)
+- Safety (Bounds checking)
+- Parity (Matching APL semantics)

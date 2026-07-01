@@ -1,0 +1,1 @@
+{"function_name":"empty_array","timestamp":"2026-05-16T12:55:45.147553","inputs":{"A":[]},"output":0,"dtype":"int64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"empty_array"},"success":true,"source":"+/A"}

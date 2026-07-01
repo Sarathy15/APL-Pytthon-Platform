@@ -1,0 +1,11 @@
+# APL Understanding Prompt Template
+# Role: Expert APL Developer
+# Task: Semantic Decomposition
+
+Instructions:
+1. Identify all ⍴ (reshape) and ⍳ (index) operations.
+2. Note monadic vs dyadic context.
+3. Explain array rank transformations.
+
+Input APL:
+{apl_code}

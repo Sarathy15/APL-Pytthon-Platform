@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "timestamp": "2026-06-01T21:25:46.873271",
+    "total_duration_seconds": 0.00949406623840332,
+    "programs_tested": 26
+  },
+  "stats": {
+    "success": 0,
+    "syntax_error": 0,
+    "conversion_error": 26,
+    "fallback_used": 0,
+    "success_rate": 0.0
+  },
+  "by_domain": {
+    "Financial": {
+      "success": 0,
+      "errors": 4,
+      "total": 4
+    },
+    "Statistics": {
+      "success": 0,
+      "errors": 4,
+      "total": 4
+    },
+    "Inventory": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    },
+    "Sales": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    },
+    "HR": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    },
+    "Operations": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    },
+    "Matrix": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    },
+    "Vector": {
+      "success": 0,
+      "errors": 3,
+      "total": 3
+    }
+  },
+  "by_complexity": {
+    "Medium": {
+      "success": 0,
+      "errors": 10,
+      "total": 10
+    },
+    "Simple": {
+      "success": 0,
+      "errors": 16,
+      "total": 16
+    }
+  },
+  "programs": [
+    {
+      "id": "FIN001",
+      "name": "Payroll Calculation",
+      "domain": "Financial",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.4582405090332031,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "FIN002",
+      "name": "Bonus Distribution",
+      "domain": "Financial",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.1342296600341797,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "FIN003",
+      "name": "Currency Conversion",
+      "domain": "Financial",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.08416175842285156,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "FIN004",
+      "name": "ROI Calculation",
+      "domain": "Financial",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.08320808410644531,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "STAT001",
+      "name": "Mean Calculation",
+      "domain": "Statistics",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.04291534423828125,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "STAT002",
+      "name": "Variance",
+      "domain": "Statistics",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.16498565673828125,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "STAT003",
+      "name": "Data Filtering",
+      "domain": "Statistics",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.1289844512939453,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "STAT004",
+      "name": "Cumulative Sum",
+      "domain": "Statistics",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.9276866912841797,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "INV001",
+      "name": "Inventory Valuation",
+      "domain": "Inventory",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.2334117889404297,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "INV002",
+      "name": "Low Stock Check",
+      "domain": "Inventory",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.04100799560546875,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "INV003",
+      "name": "Turnover Ratio",
+      "domain": "Inventory",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.032901763916015625,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "SALES001",
+      "name": "Commission Calc",
+      "domain": "Sales",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.06651878356933594,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "SALES002",
+      "name": "Revenue Sum",
+      "domain": "Sales",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.09441375732421875,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "SALES003",
+      "name": "Growth Rate",
+      "domain": "Sales",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.05698204040527344,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "HR001",
+      "name": "Headcount Sum",
+      "domain": "HR",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 1.560211181640625,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "HR002",
+      "name": "Turnover Rate",
+      "domain": "HR",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.2918243408203125,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "HR003",
+      "name": "Salary Distribution",
+      "domain": "HR",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.10538101196289062,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "OPS001",
+      "name": "Production Efficiency",
+      "domain": "Operations",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.09608268737792969,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "OPS002",
+      "name": "Downtime Analysis",
+      "domain": "Operations",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.09489059448242188,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "OPS003",
+      "name": "Defect Rate",
+      "domain": "Operations",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.0782012939453125,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "MATRIX001",
+      "name": "Matrix Transpose",
+      "domain": "Matrix",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.09584426879882812,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "MATRIX002",
+      "name": "Matrix Multiply",
+      "domain": "Matrix",
+      "complexity": "Medium",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.11134147644042969,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "MATRIX003",
+      "name": "2x2 Determinant",
+      "domain": "Matrix",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.087738037109375,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "VECTOR001",
+      "name": "Vector Addition",
+      "domain": "Vector",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.0762939453125,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "VECTOR002",
+      "name": "Vector Reverse",
+      "domain": "Vector",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.09918212890625,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    },
+    {
+      "id": "VECTOR003",
+      "name": "Vector Sort",
+      "domain": "Vector",
+      "complexity": "Simple",
+      "status": "CONVERSION_ERROR",
+      "latency_ms": 0.0972747802734375,
+      "fallback_used": false,
+      "conversion_success": false,
+      "python_valid": false,
+      "error": "ConversionAgent.convert() missing 1 required positional argument: 'understanding'"
+    }
+  ]
+}

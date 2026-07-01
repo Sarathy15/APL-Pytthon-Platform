@@ -1,0 +1,8 @@
+# Detailed Semantic Validation Prompt
+Ensure that:
+1. Matrix multiplication uses np.dot or @.
+2. Indexing uses slice() objects where appropriate.
+3. Memory views are used for large array reshapes.
+
+Strict Type Enforcement:
+[float64, int32, bool_]

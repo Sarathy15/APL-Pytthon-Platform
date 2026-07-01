@@ -1,0 +1,1 @@
+{"function_name":"negative_values","timestamp":"2026-05-15T13:05:40.991953","inputs":{"A":[-1,-2,-3]},"output":"¯2","dtype":"<U2","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"negative_values"},"success":true,"source":"+/A"}

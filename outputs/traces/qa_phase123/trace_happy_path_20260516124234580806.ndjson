@@ -1,0 +1,1 @@
+{"function_name":"happy_path","timestamp":"2026-05-16T12:42:34.580806","inputs":{"A":[1,2,3]},"output":6,"dtype":"int64","shape":[],"exec_env":{"os":"windows","apl_runtime":"dyalog","python_version":"3.13.7","extra":{}},"metadata":{"case":"happy_path"},"success":true,"source":"+/A"}

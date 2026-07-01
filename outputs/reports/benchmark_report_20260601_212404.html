@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APL-to-Python Conversion Benchmark Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { font-size: 1.1em; opacity: 0.9; }
+        
+        .content { padding: 40px; }
+        
+        .metadata {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+        }
+        .metadata p { margin: 8px 0; }
+        .metadata strong { color: #667eea; }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .metric-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .metric-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .results-section { margin-bottom: 40px; }
+        .results-section h2 { 
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .provider-results {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .provider-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .provider-header h3 {
+            color: #667eea;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .provider-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            background: white;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        
+        .stat .num {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat .label {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:hover { background: #f8f9fa; }
+        
+        .status-success { color: #28a745; font-weight: bold; }
+        .status-partial { color: #ffc107; font-weight: bold; }
+        .status-failure { color: #dc3545; font-weight: bold; }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.3s;
+        }
+        
+        .domain-stats { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .domain-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .domain-card h4 { color: #667eea; margin-bottom: 10px; }
+        .domain-card p { font-size: 0.9em; color: #666; margin: 5px 0; }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 APL-to-Python Conversion Benchmark</h1>
+            <p>Comprehensive Analysis of 27 Real Business Applications</p>
+        </header>
+        
+        <div class="content">
+
+            <div class="metadata">
+                <p><strong>Report Generated:</strong> 2026-06-01T21:24:04.490521</p>
+                <p><strong>Total Duration:</strong> 0.01 seconds</p>
+                <p><strong>Programs Tested:</strong> 27</p>
+                <p><strong>Providers Tested:</strong> ollama</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Success Rate</div>
+                    <div class="value">0.0%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0.0%"></div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Successful Conversions</div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Partial Success</div>
+                    <div class="value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Failures</div>
+                    <div class="value">27</div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>📊 Results by Provider</h2>
+
+                <div class="provider-results">
+                    <div class="provider-header">
+                        <h3>OLLAMA</h3>
+                        <span>Success Rate: 0.0%</span>
+                    </div>
+                    <div class="provider-stats">
+                        <div class="stat">
+                            <div class="num">0</div>
+                            <div class="label">Success</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">0</div>
+                            <div class="label">Partial</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">27</div>
+                            <div class="label">Failure</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">0</div>
+                            <div class="label">Fallback Used</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">0ms</div>
+                            <div class="label">Avg Latency</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">0ms</div>
+                            <div class="label">Median Latency</div>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 20px; border-top: 1px solid #e0e0e0;">
+                        <h4 style="color: #667eea; margin-bottom: 15px;">Results by Domain</h4>
+                        <div class="domain-stats">
+
+                            <div class="domain-card">
+                                <h4>Financial</h4>
+                                <p>✅ Success: 0/5</p>
+                                <p>⚠️ Partial: 0/5</p>
+                                <p>❌ Failure: 5/5</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>Statistics</h4>
+                                <p>✅ Success: 0/5</p>
+                                <p>⚠️ Partial: 0/5</p>
+                                <p>❌ Failure: 5/5</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>Inventory</h4>
+                                <p>✅ Success: 0/4</p>
+                                <p>⚠️ Partial: 0/4</p>
+                                <p>❌ Failure: 4/4</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>Sales</h4>
+                                <p>✅ Success: 0/4</p>
+                                <p>⚠️ Partial: 0/4</p>
+                                <p>❌ Failure: 4/4</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>HR</h4>
+                                <p>✅ Success: 0/3</p>
+                                <p>⚠️ Partial: 0/3</p>
+                                <p>❌ Failure: 3/3</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>Operations</h4>
+                                <p>✅ Success: 0/3</p>
+                                <p>⚠️ Partial: 0/3</p>
+                                <p>❌ Failure: 3/3</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="domain-card">
+                                <h4>Matrix</h4>
+                                <p>✅ Success: 0/3</p>
+                                <p>⚠️ Partial: 0/3</p>
+                                <p>❌ Failure: 3/3</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0.0%"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 20px; border-top: 1px solid #e0e0e0;">
+                        <h4 style="color: #667eea; margin-bottom: 15px;">Detailed Results</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Program</th>
+                                    <th>Domain</th>
+                                    <th>Complexity</th>
+                                    <th>Status</th>
+                                    <th>Latency</th>
+                                    <th>Fallback</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>FIN001</td>
+                                    <td>Payroll Calculation</td>
+                                    <td>Financial</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>FIN002</td>
+                                    <td>Bonus Distribution</td>
+                                    <td>Financial</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>FIN003</td>
+                                    <td>Currency Conversion</td>
+                                    <td>Financial</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>FIN004</td>
+                                    <td>Loan Amortization</td>
+                                    <td>Financial</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>FIN005</td>
+                                    <td>ROI Analysis</td>
+                                    <td>Financial</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>STAT001</td>
+                                    <td>Mean Calculation</td>
+                                    <td>Statistics</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>STAT002</td>
+                                    <td>Variance Calculation</td>
+                                    <td>Statistics</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>STAT003</td>
+                                    <td>Percentile Ranking</td>
+                                    <td>Statistics</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>STAT004</td>
+                                    <td>Data Filtering</td>
+                                    <td>Statistics</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>STAT005</td>
+                                    <td>Cumulative Sum</td>
+                                    <td>Statistics</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>INV001</td>
+                                    <td>Inventory Valuation</td>
+                                    <td>Inventory</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>INV002</td>
+                                    <td>Stock Level Check</td>
+                                    <td>Inventory</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>INV003</td>
+                                    <td>Inventory Turnover</td>
+                                    <td>Inventory</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>INV004</td>
+                                    <td>Reorder Point</td>
+                                    <td>Inventory</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>SALES001</td>
+                                    <td>Sales Commission</td>
+                                    <td>Sales</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>SALES002</td>
+                                    <td>Revenue by Region</td>
+                                    <td>Sales</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>SALES003</td>
+                                    <td>Growth Rate</td>
+                                    <td>Sales</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>SALES004</td>
+                                    <td>Product Mix</td>
+                                    <td>Sales</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>HR001</td>
+                                    <td>Headcount by Department</td>
+                                    <td>HR</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>HR002</td>
+                                    <td>Turnover Rate</td>
+                                    <td>HR</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>HR003</td>
+                                    <td>Salary Grade Distribution</td>
+                                    <td>HR</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>OPS001</td>
+                                    <td>Production Efficiency</td>
+                                    <td>Operations</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>OPS002</td>
+                                    <td>Downtime Analysis</td>
+                                    <td>Operations</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>OPS003</td>
+                                    <td>Quality Inspection</td>
+                                    <td>Operations</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>MATRIX001</td>
+                                    <td>Matrix Transpose</td>
+                                    <td>Matrix</td>
+                                    <td>Simple</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>MATRIX002</td>
+                                    <td>Matrix Multiplication</td>
+                                    <td>Matrix</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>MATRIX003</td>
+                                    <td>Matrix Determinant Pattern</td>
+                                    <td>Matrix</td>
+                                    <td>Medium</td>
+                                    <td><span class="status-failure">ERROR</span></td>
+                                    <td>0ms</td>
+                                    <td>No</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <footer>
+            <p>APL-to-Python Migration Platform | Benchmark Report Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        </footer>
+    </div>
+</body>
+</html>
