@@ -314,7 +314,7 @@ function App() {
     document.body.removeChild(element);
   };
 
-  const isBackendHealthy = backendStatus?.status === 'healthy';
+  const isBackendHealthy = backendStatus?.status === 'healthy' || backendStatus?.status === 'ok';
   const understanding = result?.understanding ? normalizeUnderstanding(result.understanding) : null;
 
   return (

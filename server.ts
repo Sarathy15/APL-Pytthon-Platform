@@ -22,7 +22,7 @@ async function startServer() {
 
   // API Health Check
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", service: "APL-Migration-Backend", version: "1.0.0" });
+    res.json({ status: "healthy", service: "APL-Migration-Backend", version: "1.0.0" });
   });
 
   // Mock migration endpoints used by the frontend
